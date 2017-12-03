@@ -6,6 +6,14 @@
 #include "node.h"
 #include <string>
 
+Node::Node(char var){
+  this->node_t = VARIABLE;
+  this->data.var = var;
+  this->operand1 = NULL;
+  this->operand2 = NULL;
+  this->parent = NULL;
+}
+
 Node::Node(operator_type op, Node* operand1, Node* operand2){
   this->node_t = EXPRESSION;
   this->data.op = op;
@@ -36,6 +44,9 @@ string Node::print_infix() const{
   if(getNodeType() == INTEGER){
     s1 = int_to_string()+ ')';
   }
+  else if(getNodeType() == VARIABLE){
+    s1 = '(' + this->data.var;
+  }
   else if(getNodeType() == EXPRESSION){
     s1 = print_operator();
   }
@@ -46,6 +57,9 @@ string Node::print_prefix() const{
   if(getNodeType() == INTEGER){
     s1 = int_to_string();
   }
+  else if(getNodeType() == VARIABLE){
+    s1 = this->data.var;
+  }
   else if(getNodeType() == EXPRESSION){
     s1 = print_operator();
   }
@@ -55,6 +69,9 @@ string Node::print_postfix() const{
   string s1 = "";
   if(getNodeType() == INTEGER) {
     s1 = int_to_string();
+  }
+  else if(getNodeType() == VARIABLE){
+    s1 = this->data.var;
   }
   else if(getNodeType() == EXPRESSION){
     s1 = print_operator();
