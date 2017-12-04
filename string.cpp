@@ -6,21 +6,30 @@
 #include "string.h"
 
 int main(){
-  string in = "";
-  string post = "";
-  string pre = "";
+  string p = "";
   List list;
   Expression expression;
-  Node* n = list.pars_expr();
-  expression.infix(n);
-  in = expression.return_s1();
-  cout << in;
-  expression.postfix(n);
-  post = expression.return_s1();
-  cout << post << endl;
-  expression.prefix(n);
-  pre = expression.return_s1();
-  cout << pre <<endl;
+  while (p != "stop"){
+    p = "";
+    q = "";
+    cout << "Enter 1 for Expression Evaluation, 2 for Expression Comparison, or stop to stop";
+    cin >> p;
+    if(p == "stop"){
+      break;
+    }
+    else if(p == "1"){
+      Node* n = list.pars_expr();
+      cout << expression.eval(n) << endl;
+    }
+    else if(p == "2"){
+      Node* n = list.pars_expr();
+      Node* p = list.pars_expr();
+      cout << expression.compare(expression.eval(n), expression.eval(q)) << endl;
+    }
+    else {
+      cout << "Not a valid option" << endl;
+    }
+  }
   return 0;
 };
 

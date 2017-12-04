@@ -133,6 +133,10 @@ void Node::change_operand2(Node *a){
 }
 void Node::setParent(Node *a){
    this->parent = a;
+}
+
+int Node::get_val(Node *a){
+  return a->data.val;
 };
 
 

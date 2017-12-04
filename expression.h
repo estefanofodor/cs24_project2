@@ -14,6 +14,8 @@ class Expression{
   void prefix(Node* source);
   void postfix(Node* source);
   string return_s1() const;
+  int eval(Node* source);
+  bool compare(int x, int y);
   
  private: 
   string s1;

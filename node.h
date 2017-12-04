@@ -39,6 +39,7 @@ class Node {
     void change_operator(operator_type op);
     void change_operand1(Node *a);
     void change_operand2(Node *a);
+    int get_val(Node *a);
  private:
     node_type node_t;
     data_type data;

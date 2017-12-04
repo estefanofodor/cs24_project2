@@ -52,10 +52,12 @@ Node* List::pars_expr(){
     }
     else if(c == 'x'){
       p = new Node(c);
+      p->setParent(current);
       current->change_operand1(p);
     }
     else if(val >= 0 || val <= 9){
       q = new Node(val);
+      q->setParent(current);
       current->change_operand2(q);
       current = current->get_parent();
     }
